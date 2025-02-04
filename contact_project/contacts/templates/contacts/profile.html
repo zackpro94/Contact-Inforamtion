@@ -1,0 +1,16 @@
+{% extends 'contacts/base.html' %}
+{% block content %}
+<h2>Profile</h2>
+<div class="card">
+    <div class="card-body">
+        <p><strong>Username:</strong> {{ profile.user.username }}</p>
+        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+        <p><strong>Phone:</strong> {{ profile.phone_number }}</p>
+        <p><strong>Address:</strong> {{ profile.address }}</p>
+        <p><strong>City:</strong> {{ profile.city }}</p>
+        <p><strong>State:</strong> {{ profile.state }}</p>
+        <p><strong>Country:</strong> {{ profile.country }}</p>
+    </div>
+</div>
+<a href="{% url 'home' %}" class="btn btn-secondary mt-3">Home</a>
+{% endblock %}

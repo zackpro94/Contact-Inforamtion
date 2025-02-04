@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Contact Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --hover-color: #2980b9;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            width: 250px;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .employee-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .action-btns .btn {
+            margin: 0 5px;
+            min-width: 80px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3 class="mb-4"><i class="fas fa-address-book"></i> Contact Manager</h3>
+        <nav class="nav flex-column">
+            <a class="nav-link text-white" href="{% url 'home' %}">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
+            <a class="nav-link text-white" href="{% url 'add_employee' %}">
+                <i class="fas fa-user-plus me-2"></i>Add Employee
+            </a>
+            <a class="nav-link text-white" href="{% url 'import' %}">
+                <i class="fas fa-file-import me-2"></i>Import
+            </a>
+            <a class="nav-link text-white" href="{% url 'export_excel' %}">
+                <i class="fas fa-file-export me-2"></i>Export
+            </a>
+            <div class="mt-4">
+                <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        {% include 'contacts/messages.html' %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
